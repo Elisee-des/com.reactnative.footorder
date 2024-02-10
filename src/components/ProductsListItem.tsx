@@ -1,15 +1,23 @@
 import Colors from "@/constants/Colors";
+import { Product } from "@/types";
 import products from "@assets/data/products";
 import { Image, StyleSheet, Text, View } from "react-native";
 
-const ProductsListItem = ({ product }) => {
+type ProductsListItemProps = {
+  product: Product;
+};
+
+const ProductsListItem = ({ product }: ProductsListItemProps) => {
   return (
     <View style={styles.container}>
       <View>
-        <Image source={{ uri: product.image }} style={styles.image} />
+        <Image
+          source={{ uri: product?.image?.toString() }}
+          style={styles.image}
+        />
 
-        <Text style={styles.title}>{product.name}</Text>
-        <Text style={styles.price}>${product.price}</Text>
+        <Text style={styles.title}>{product?.name}</Text>
+        <Text style={styles.price}>${product?.price}</Text>
       </View>
     </View>
   );
