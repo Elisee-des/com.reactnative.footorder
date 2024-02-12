@@ -1,6 +1,6 @@
 import { View, Text, Image, StyleSheet, Pressable } from "react-native";
 import React, { useState } from "react";
-import { Stack, useLocalSearchParams } from "expo-router";
+import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import products from "@assets/data/products";
 import Button from "@/components/Button";
 import * as Haptics from "expo-haptics";
@@ -14,12 +14,14 @@ const ProductDetailScreen = () => {
   const product = products.find((p) => p.id.toString() === id);
   const [selectedSize, setSelectedSize] = useState<PizzaSize>("M");
   const { addItem } = useCart();
+  const router = useRouter();
 
   const addToCart = async () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     if (!product) return;
     addItem(product, selectedSize);
-    console.warn("Ajouter avec succès au panier !");
+    router.push("/cart");
+    console.warn("produit ajouter avec succès !");
   };
 
   if (!product) {

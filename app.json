@@ -22,7 +22,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.eliseedes.FoodOrdering"
     },
     "web": {
       "bundler": "metro",
@@ -35,6 +36,14 @@
     "experiments": {
       "typedRoutes": true,
       "tsconfigPaths": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "04080e03-7d03-4da3-9ce2-8cf6456bf649"
+      }
     }
   }
 }

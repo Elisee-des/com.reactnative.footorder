@@ -12,7 +12,7 @@ type CartListItemProps = {
 };
 
 const CartListItem = ({ cartItem }: CartListItemProps) => {
-  //   const { updateQuantity } = useCart();
+  const { updateQuantity } = useCart();
   return (
     <View style={styles.container}>
       <Image
@@ -32,7 +32,7 @@ const CartListItem = ({ cartItem }: CartListItemProps) => {
       <View style={styles.quantitySelector}>
         <View style={{ backgroundColor: "gainsboro", borderRadius: 50 }}>
           <FontAwesome
-            //   onPress={() => updateQuantity(cartItem.id, -1)}
+            onPress={() => updateQuantity(cartItem.id, -1)}
             name="minus"
             color="gray"
             style={{ padding: 5 }}
@@ -43,7 +43,7 @@ const CartListItem = ({ cartItem }: CartListItemProps) => {
 
         <View style={{ backgroundColor: "gainsboro", borderRadius: 50 }}>
           <FontAwesome
-            //   onPress={() => updateQuantity(cartItem.id, 1)}
+            onPress={() => updateQuantity(cartItem.id, 1)}
             name="plus"
             color="gray"
             style={{ padding: 5 }}
