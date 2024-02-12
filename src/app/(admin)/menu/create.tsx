@@ -103,7 +103,7 @@ const CreateProductScreen = () => {
 
   const confirmDelete = () => {
     Alert.alert(
-      "confirmation",
+      "Confirmation",
       "Êtes vous sûr de vouloir supprimer ce produit ?",
       [
         {
@@ -159,7 +159,7 @@ const CreateProductScreen = () => {
       {isUpdating && (
         <Button
           onPress={confirmDelete}
-          style={styles.textButtonDelete}
+          style={styles.textButton}
           text="Supprimer le produit"
         />
       )}

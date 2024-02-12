@@ -15,7 +15,6 @@ const Vibrate = async () => {
 
 const ProductsListItem = ({ product }: ProductsListItemProps) => {
   const segements = useSegments();
-  console.log("🚀 ~ ProductsListItem ~ segements:", segements[0]);
 
   return (
     <Link
