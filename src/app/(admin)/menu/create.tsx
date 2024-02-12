@@ -9,7 +9,7 @@ import {
 import React, { useState } from "react";
 import Colors from "@/constants/Colors";
 import Button from "@/components/Button";
-import { Stack } from "expo-router";
+import { Stack, useLocalSearchParams } from "expo-router";
 import { defaultPizzaImage } from "@/types";
 import * as ImagePicker from "expo-image-picker";
 
@@ -18,6 +18,9 @@ const CreateProductScreen = () => {
   const [price, setPrice] = useState<string>("");
   const [errors, setErrors] = useState<string>("");
   const [image, setImage] = useState<string | null>(null);
+
+  const { id } = useLocalSearchParams();
+  const isUpdating = !!id;
 
   const resetField = () => {
     setName("");
@@ -55,7 +58,26 @@ const CreateProductScreen = () => {
     }
 
     resetField();
-    console.warn("Produit creer !!!");
+    console.warn("Produit cré avec succès !!!");
+  };
+
+  const onUpdateCreate = () => {
+    if (!validateInput()) {
+      return;
+    }
+
+    resetField();
+    console.warn("Produit edité avec succès !!!");
+  };
+
+  const onSubmit = () => {
+    if (isUpdating) {
+      //on met a jour
+      onUpdateCreate();
+    } else {
+      //on creer
+      onCreate();
+    }
   };
 
   const pickImage = async () => {
@@ -76,7 +98,11 @@ const CreateProductScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Stack.Screen options={{ title: "Creation d'un produit" }} />
+      <Stack.Screen
+        options={{
+          title: isUpdating ? `Edition du produit` : "Creation d'un produit",
+        }}
+      />
 
       <Image
         source={{ uri: image || defaultPizzaImage }}
@@ -104,7 +130,10 @@ const CreateProductScreen = () => {
       />
 
       {errors && <Text style={{ color: "red" }}>{errors}</Text>}
-      <Button onPress={onCreate} text="Creér le produit" />
+      <Button
+        onPress={onSubmit}
+        text={isUpdating ? "Edition du produit" : "Creér le produit"}
+      />
     </View>
   );
 };
