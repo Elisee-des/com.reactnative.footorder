@@ -5,6 +5,7 @@ import {
   TextInput,
   Image,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import React, { useState } from "react";
 import Colors from "@/constants/Colors";
@@ -96,6 +97,27 @@ const CreateProductScreen = () => {
     }
   };
 
+  const onDelete = () => {
+    console.warn("Supprimer avec succès");
+  };
+
+  const confirmDelete = () => {
+    Alert.alert(
+      "confirmation",
+      "Êtes vous sûr de vouloir supprimer ce produit ?",
+      [
+        {
+          text: "Annuler",
+        },
+        {
+          text: "Supprimer",
+          style: "destructive",
+          onPress: onDelete,
+        },
+      ]
+    );
+  };
+
   return (
     <View style={styles.container}>
       <Stack.Screen
@@ -134,6 +156,13 @@ const CreateProductScreen = () => {
         onPress={onSubmit}
         text={isUpdating ? "Edition du produit" : "Creér le produit"}
       />
+      {isUpdating && (
+        <Button
+          onPress={confirmDelete}
+          style={styles.textButtonDelete}
+          text="Supprimer le produit"
+        />
+      )}
     </View>
   );
 };
@@ -153,6 +182,13 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     fontWeight: "bold",
     color: Colors.light.tint,
+    marginVertical: 10,
+  },
+
+  textButtonDelete: {
+    alignSelf: "center",
+    fontWeight: "bold",
+    color: "red",
     marginVertical: 10,
   },
 
