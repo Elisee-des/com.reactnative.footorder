@@ -12,6 +12,9 @@
 // export type Enums<T extends keyof Database['public']['Enums']> =
 //   Database['public']['Enums'][T];
 
+export const defaultPizzaImage =
+  'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/default.png';
+
 export type Product = {
   id: number;
   image: string | null;

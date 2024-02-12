@@ -1,28 +1,90 @@
-import { View, Text, StyleSheet, TextInput, Image } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 import React, { useState } from "react";
 import Colors from "@/constants/Colors";
 import Button from "@/components/Button";
 import { Stack } from "expo-router";
+import { defaultPizzaImage } from "@/types";
+import * as ImagePicker from "expo-image-picker";
 
 const CreateProductScreen = () => {
   const [name, setName] = useState<string>("");
   const [price, setPrice] = useState<string>("");
-
-  const onCreate = () => {
-    resetField();
-    console.warn("Produit creer !!!");
-  };
+  const [errors, setErrors] = useState<string>("");
+  const [image, setImage] = useState<string | null>(null);
 
   const resetField = () => {
     setName("");
     setPrice("");
   };
 
+  const validateInput = () => {
+    setErrors("");
+    if (!name) {
+      setErrors("Le nom est requis.");
+      return false;
+    }
+
+    if (!price) {
+      setErrors("Le prix est requis.");
+      return false;
+    }
+
+    if (!price) {
+      setErrors("Le prix est requis.");
+      return false;
+    }
+
+    if (isNaN(parseFloat(price))) {
+      setErrors("Le prix dois être un nombre.");
+      return false;
+    }
+
+    return true;
+  };
+
+  const onCreate = () => {
+    if (!validateInput()) {
+      return;
+    }
+
+    resetField();
+    console.warn("Produit creer !!!");
+  };
+
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [5, 5],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
+
   return (
     <View style={styles.container}>
-      <Stack.Screen options={{ title: "Create Product" }} />
+      <Stack.Screen options={{ title: "Creation d'un produit" }} />
 
-      <Text style={styles.textButton}>Select Image</Text>
+      <Image
+        source={{ uri: image || defaultPizzaImage }}
+        style={styles.image}
+      />
+      <TouchableOpacity onPress={pickImage}>
+        <Text style={styles.textButton}>Selectionner une Image</Text>
+      </TouchableOpacity>
 
       <Text style={styles.label}>Name</Text>
       <TextInput
@@ -41,6 +103,7 @@ const CreateProductScreen = () => {
         keyboardType="numeric"
       />
 
+      {errors && <Text style={{ color: "red" }}>{errors}</Text>}
       <Button onPress={onCreate} text="Creér le produit" />
     </View>
   );
