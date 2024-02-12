@@ -9,7 +9,7 @@ const orders: Order[] = [
     id: 23123,
     created_at: now.subtract(1, 'hour').toISOString(),
     total: 31.4,
-    status: 'Cooking',
+    status: 'Préparation',
     user_id: '1',
     order_items: [
       {
@@ -34,7 +34,7 @@ const orders: Order[] = [
     id: 32145,
     created_at: now.subtract(3, 'days').toISOString(),
     total: 11.4,
-    status: 'Delivered',
+    status: 'Livré',
     user_id: '1',
     order_items: [
       {
@@ -51,7 +51,7 @@ const orders: Order[] = [
     id: 23445,
     created_at: now.subtract(3, 'weeks').toISOString(),
     total: 11.4,
-    status: 'Delivered',
+    status: 'Livré',
     user_id: '1',
     order_items: [
       {

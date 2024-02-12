@@ -33,13 +33,13 @@ export type CartItem = {
 };
 
 export const OrderStatusList: OrderStatus[] = [
-  'New',
-  'Cooking',
-  'Delivering',
-  'Delivered',
+  'Nouveau',
+  'Préparation',
+  'En cours de livraison',
+  'Livré',
 ];
 
-export type OrderStatus = 'New' | 'Cooking' | 'Delivering' | 'Delivered';
+export type OrderStatus = 'Nouveau' | 'Préparation' | 'En cours de livraison' | 'Livré';
 
 export type Order = {
   id: number;
