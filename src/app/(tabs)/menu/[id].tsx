@@ -3,15 +3,22 @@ import React, { useState } from "react";
 import { Stack, useLocalSearchParams } from "expo-router";
 import products from "@assets/data/products";
 import Button from "@/components/Button";
+import * as Haptics from "expo-haptics";
+import { useCart } from "@/providers/CartProvider";
+import { PizzaSize } from "@/types";
 
-const sizes = ["S", "M", "L", "XL"];
+const sizes: PizzaSize[] = ["S", "M", "L", "XL"];
 
 const ProductDetailScreen = () => {
   const { id } = useLocalSearchParams();
   const product = products.find((p) => p.id.toString() === id);
-  const [selectedSize, setSelectedSize] = useState<string>("M");
+  const [selectedSize, setSelectedSize] = useState<PizzaSize>("M");
+  const { addItem } = useCart();
 
   const addToCart = async () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    if (!product) return;
+    addItem(product, selectedSize);
     console.warn("Ajouter avec succès au panier !");
   };
 

@@ -3,14 +3,19 @@ import { Product } from "@/types";
 import products from "@assets/data/products";
 import { Link } from "expo-router";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import * as Haptics from "expo-haptics";
 
 type ProductsListItemProps = {
   product: Product;
 };
 
+const Vibrate = async () => {
+  Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+};
+
 const ProductsListItem = ({ product }: ProductsListItemProps) => {
   return (
-    <Link href={`/(tabs)/menu/${product.id}`} asChild>
+    <Link href={`/(tabs)/menu/${product.id}`} onPress={Vibrate} asChild>
       <Pressable style={styles.container}>
         <Image
           source={{ uri: product?.image?.toString() }}

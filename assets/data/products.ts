@@ -69,6 +69,76 @@ const products = [
       'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/6cheese.png',
     price: 13.29,
   },
+  {
+    id: 11,
+    name: 'Ultimate Pepperoni',
+    image:
+      'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/peperoni.png',
+    price: 16.99,
+  },
+  {
+    id: 12,
+    name: 'ExtravaganZZa',
+    image:
+      'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/extravaganzza.png',
+    price: 14.99,
+  },
+  {
+    id: 13,
+    name: 'MeatZZa',
+    image:
+      'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/peperoni.png',
+    price: 13.47,
+  },
+  {
+    id: 14,
+    name: 'Margarita',
+    image:
+      'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/margarita.png',
+    price: 19.9,
+  },
+  {
+    id: 15,
+    name: 'Pacific Veggie',
+    image:
+      'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/veggie.png',
+    price: 18.99,
+  },
+  {
+    id: 16,
+    name: 'Hawaiian',
+    image:
+      'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/hawaiin.png',
+    price: 10.49,
+  },
+  {
+    id: 17,
+    name: 'Deluxe',
+    image:
+      'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/deluxe.png',
+    price: 18.99,
+  },
+  {
+    id: 18,
+    name: 'BBQ Chicken',
+    image:
+      'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/veggie.png',
+    price: 13.89,
+  },
+  {
+    id: 19,
+    name: 'Chicken Bacon Ranch',
+    image:
+      'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/extravaganzza.png',
+    price: 13.99,
+  },
+  {
+    id: 20,
+    name: '6 Cheese',
+    image:
+      'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/6cheese.png',
+    price: 23.29,
+  },
 ];
 
 export default products;

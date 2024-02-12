@@ -38,11 +38,11 @@ export default function TabLayout() {
           ),
           headerShown: false,
           headerRight: () => (
-            <Link href="/modal" asChild>
+            <Link href="/cart" asChild>
               <Pressable>
                 {({ pressed }) => (
                   <FontAwesome
-                    name="info-circle"
+                    name="shopping-cart"
                     size={25}
                     color={Colors[colorScheme ?? "light"].text}
                     style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
