@@ -1,7 +1,7 @@
 import Colors from "@/constants/Colors";
 import { Product } from "@/types";
 import products from "@assets/data/products";
-import { Link } from "expo-router";
+import { Link, useSegments } from "expo-router";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import * as Haptics from "expo-haptics";
 
@@ -14,8 +14,15 @@ const Vibrate = async () => {
 };
 
 const ProductsListItem = ({ product }: ProductsListItemProps) => {
+  const segements = useSegments();
+  console.log("🚀 ~ ProductsListItem ~ segements:", segements[0]);
+
   return (
-    <Link href={`/(tabs)/menu/${product.id}`} onPress={Vibrate} asChild>
+    <Link
+      href={`/${segements[0]}/menu/${product.id}`}
+      onPress={Vibrate}
+      asChild
+    >
       <Pressable style={styles.container}>
         <Image
           source={{ uri: product?.image?.toString() }}

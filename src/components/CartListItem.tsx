@@ -29,11 +29,7 @@ const CartListItem = ({ cartItem }: CartListItemProps) => {
   return (
     <View style={styles.container}>
       {/* <TouchableOpacity onPress={router.push(`/(tabs)/menu/${cartItem.product.id}`)}> */}
-      <Link
-        href={`/(tabs)/menu/${cartItem.product.id}`}
-        onPress={Vibrate}
-        asChild
-      >
+      <Link href={`/menu/${cartItem.product.id}`} onPress={Vibrate} asChild>
         <Pressable>
           <Image
             source={{ uri: cartItem.product.image?.toString() }}
