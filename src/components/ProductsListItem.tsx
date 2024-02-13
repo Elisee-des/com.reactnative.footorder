@@ -1,5 +1,5 @@
 import Colors from "@/constants/Colors";
-import { Product } from "@/types";
+import { Product, defaultPizzaImage } from "@/types";
 import products from "@assets/data/products";
 import { Link, useSegments } from "expo-router";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
@@ -24,7 +24,7 @@ const ProductsListItem = ({ product }: ProductsListItemProps) => {
     >
       <Pressable style={styles.container}>
         <Image
-          source={{ uri: product?.image?.toString() }}
+          source={{ uri: product?.image?.toString() || defaultPizzaImage }}
           style={styles.image}
           resizeMode="contain"
         />

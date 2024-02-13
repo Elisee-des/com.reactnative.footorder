@@ -1,22 +1,28 @@
 import products from "@assets/data/products";
-import { FlatList, Image, StyleSheet, Text, View } from "react-native";
+import {
+  ActivityIndicator,
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import ProductsListItem from "@/components/ProductsListItem";
 import { useEffect } from "react";
 import { supabase } from "@/lib/supabase";
+import { useQuery } from "@tanstack/react-query";
+import { useProductsList } from "@/api/products";
 
 export default function MenuScreen() {
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const { data, error } = await supabase.from("products").select("*");
-        console.log("🚀 ~ fetchProducts ~ data:", data);
-      } catch (error) {
-        console.log("Echec de chargement des produits : ", error);
-      }
+  const { data: products, error, isLoading } = useProductsList();
 
-      fetchProducts();
-    };
-  }, []);
+  if (isLoading) {
+    <ActivityIndicator />;
+  }
+
+  if (error) {
+    return <Text>Echec de chargement des produits</Text>;
+  }
 
   return (
     <View>
