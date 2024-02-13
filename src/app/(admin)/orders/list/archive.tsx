@@ -1,12 +1,13 @@
-import { View, Text } from "react-native";
-import React from "react";
+import { Text, FlatList, ActivityIndicator } from "react-native";
+import orders from "@assets/data/orders";
+import OrderListItem from "@/components/OrderListtem";
 
-const archive = () => {
+export default function OrdersScreen() {
   return (
-    <View>
-      <Text>archive</Text>
-    </View>
+    <FlatList
+      data={orders}
+      renderItem={({ item }) => <OrderListItem order={item} />}
+      contentContainerStyle={{ gap: 10, padding: 10 }}
+    />
   );
-};
-
-export default archive;
+}
