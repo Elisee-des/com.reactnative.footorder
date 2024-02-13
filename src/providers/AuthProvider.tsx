@@ -54,7 +54,6 @@ export default function AuthProvider({ children }: PropsWithChildren) {
       setSession(session);
     });
   }, []);
-  console.log("🚀 ~ fetchSession ~ profiles:", profile);
 
   return (
     <AuthContext.Provider

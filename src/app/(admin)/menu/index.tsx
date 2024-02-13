@@ -1,6 +1,8 @@
 import products from "@assets/data/products";
 import { FlatList, Image, StyleSheet, Text, View } from "react-native";
 import ProductsListItem from "@/components/ProductsListItem";
+import { useEffect } from "react";
+import { supabase } from "@/lib/supabase";
 
 export default function MenuScreen() {
   return (

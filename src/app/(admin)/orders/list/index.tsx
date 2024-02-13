@@ -6,8 +6,6 @@ import OrderListItem from "@/components/OrderListtem";
 export default function OrdersScreen() {
   return (
     <>
-      <Stack.Screen options={{ title: "Actif" }} />
-
       <FlatList
         data={orders}
         contentContainerStyle={{ gap: 10, padding: 10 }}

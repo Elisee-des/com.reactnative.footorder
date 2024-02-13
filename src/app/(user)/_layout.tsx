@@ -7,6 +7,8 @@ import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useClientOnlyValue } from "@/components/useClientOnlyValue";
 import { useAuth } from "@/providers/AuthProvider";
+import Button from "@/components/Button";
+import { supabase } from "@/lib/supabase";
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
